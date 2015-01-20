@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context=".MainActivity">
+
+    <TextView 
+        android:text="@string/hello_world" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblMessage"
+        android:textSize="16dip"
+        android:layout_margin="10dip"
+        android:textColor="#000000"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:id="@+id/radioButton"
+        android:layout_below="@+id/lblMessage"
+        android:layout_alignRight="@+id/lblMessage"
+        android:layout_marginRight="72dp"
+        android:layout_marginTop="109dp"
+        android:textColor="#ffff1036" />
+
+</RelativeLayout>
