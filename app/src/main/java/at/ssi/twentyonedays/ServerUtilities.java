@@ -32,12 +32,14 @@ public final class ServerUtilities {
      * Register this account/device pair within the server.
      *
      */
-    static void register(final Context context, String name, String email, final String regId) {
+    static void register(final Context context, String email, String password, final String regId) {
         Log.i(TAG, "registering device (regId = " + regId + ")");
+        Log.i(TAG, "eMail = " + email);
+        Log.i(TAG, "Password = " + password);
         String serverUrl = SERVER_URL;
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new HashMap<>();
         params.put("regId", regId);
-        params.put("name", name);
+        params.put("password", password);
         params.put("email", email);
 
         long backoff = BACKOFF_MILLI_SECONDS + random.nextInt(1000);
@@ -45,7 +47,7 @@ public final class ServerUtilities {
         // As the server might be down, we will retry it a couple
         // times.
         for (int i = 1; i <= MAX_ATTEMPTS; i++) {
-            Log.d(TAG, "Attempt #" + i + " to register" + "Name: " + name + " eMail: " + email + " Server URL: " + serverUrl);
+            Log.d(TAG, "Attempt #" + i + " to register" + "Passwort: " + password + " eMail: " + email + " Server URL: " + serverUrl);
             try {
                 displayMessage(context, context.getString(
                         R.string.server_registering, i, MAX_ATTEMPTS));
@@ -88,7 +90,7 @@ public final class ServerUtilities {
     static void unregister(final Context context, final String regId) {
         Log.i(TAG, "unregistering device (regId = " + regId + ")");
         String serverUrl = SERVER_URL + "/unregister";
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new HashMap<>();
         params.put("regId", regId);
         try {
             post(serverUrl, params);
@@ -162,6 +164,10 @@ public final class ServerUtilities {
             out.close();
             // handle the response
             int status = conn.getResponseCode();
+            String ResponseMessage = conn.getResponseMessage();
+            Log.e("SSI ServerResponse ", ResponseMessage);
+
+           // CommonUtilities.displayMessage(ResponseMessage);
             if (status != 200) {
                 throw new IOException("Post failed with error code " + status);
             }

@@ -15,19 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lblMessage"
-        android:textSize="16dip"
+        android:textSize="16sp"
         android:layout_margin="10dip"
         android:textColor="#000000"/>
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:id="@+id/radioButton"
-        android:layout_below="@+id/lblMessage"
-        android:layout_alignRight="@+id/lblMessage"
-        android:layout_marginRight="72dp"
-        android:layout_marginTop="109dp"
-        android:textColor="#ffff1036" />
 
 </RelativeLayout>

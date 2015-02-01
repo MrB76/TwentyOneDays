@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gcm.GCMRegistrar;
+//import com.google.android.gsf;
+
 
 import static at.ssi.twentyonedays.CommonUtilities.DISPLAY_MESSAGE_ACTION;
 import static at.ssi.twentyonedays.CommonUtilities.EXTRA_MESSAGE;
@@ -30,7 +32,7 @@ public class MainActivity extends Activity {
     // Connection detector
     ConnectionDetector cd;
 
-    public static String name;
+    public static String password;
     public static String email;
 
     @Override
@@ -53,7 +55,7 @@ public class MainActivity extends Activity {
         // Getting name, email from intent
         Intent i = getIntent();
 
-        name = i.getStringExtra("name");
+        password = i.getStringExtra("name");
         email = i.getStringExtra("email");
 
         // Make sure the device has the proper dependencies.
@@ -91,7 +93,7 @@ public class MainActivity extends Activity {
                     protected Void doInBackground(Void... params) {
                         // Register on our server
                         // On server creates a new user
-                        ServerUtilities.register(context, name, email, regId);
+                        ServerUtilities.register(context, email, password, regId);
                         return null;
                     }
 

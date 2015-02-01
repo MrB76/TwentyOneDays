@@ -2,37 +2,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >    
-     
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Please Login to Challange:"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:textColorHint="#ffff0126"
+        android:textIsSelectable="false"
+        android:layout_weight="0.11" />
+
      <TextView android:layout_width="fill_parent"
          android:layout_height="wrap_content"
-         android:text="Full Name:"
-         android:layout_marginLeft="10dip"
-         android:layout_marginRight="10dip"
-         android:layout_marginTop="20dip"/>
-     
-     <EditText android:id="@+id/txtName" 
-         android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:layout_margin="10dip"
-         android:layout_marginBottom="20dip"/>
-     
-     <TextView android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:text="Email:"
+         android:text="eMail Address:"
          android:layout_marginLeft="10dip"
          android:layout_marginRight="10dip"/>
-     
+
      <EditText android:id="@+id/txtEmail" 
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"
          android:layout_margin="10dip"
          android:layout_marginBottom="20dip"/>
-     
-     <Button android:id="@+id/btnRegister"
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Passwort:"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="20dip"/>
+
+    <EditText android:id="@+id/txtPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:layout_marginBottom="20dip"/>
+
+    <Button android:id="@+id/btnRegister"
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"
-         android:text="Register"
+         android:text="21Days Login"
          android:layout_margin="10dip"/>
 
 </LinearLayout>

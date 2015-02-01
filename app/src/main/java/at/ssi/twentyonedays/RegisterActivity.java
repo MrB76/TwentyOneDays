@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import static at.ssi.twentyonedays.CommonUtilities.SENDER_ID;
 import static at.ssi.twentyonedays.CommonUtilities.SERVER_URL;
@@ -18,7 +19,7 @@ public class RegisterActivity extends Activity {
 	ConnectionDetector cd;
 	
 	// UI elements
-	EditText txtName;
+	EditText txtPassword;
 	EditText txtEmail;
 	
 	// Register button
@@ -28,7 +29,13 @@ public class RegisterActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
-		
+
+        EditText editTextPassword = (EditText)findViewById(R.id.txtPassword);
+        editTextPassword.setText("bleier6", TextView.BufferType.EDITABLE);
+
+        EditText editTextEmail = (EditText)findViewById(R.id.txtEmail);
+        editTextEmail.setText("Bernhard.Bleier@gmail.com", TextView.BufferType.EDITABLE);
+
 		cd = new ConnectionDetector(getApplicationContext());
 
 		// Check if Internet present
@@ -42,16 +49,16 @@ public class RegisterActivity extends Activity {
 		}
 
 		// Check if GCM configuration is set
-		if (SERVER_URL == null || SENDER_ID == null || SERVER_URL.length() == 0
+		if (SERVER_URL.length() == 0
 				|| SENDER_ID.length() == 0) {
-			// GCM sernder id / server url is missing
+			// GCM sender id / server url is missing
 			alert.showAlertDialog(RegisterActivity.this, "Configuration Error!",
 					"Please set your Server URL and GCM Sender ID", false);
 			// stop executing code by return
 			 return;
 		}
 		
-		txtName = (EditText) findViewById(R.id.txtName);
+		txtPassword = (EditText) findViewById(R.id.txtPassword);
 		txtEmail = (EditText) findViewById(R.id.txtEmail);
 		btnRegister = (Button) findViewById(R.id.btnRegister);
 		
@@ -63,18 +70,18 @@ public class RegisterActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// Read EditText dat
-				String name = txtName.getText().toString();
+				String password = txtPassword.getText().toString();
 				String email = txtEmail.getText().toString();
 				
 				// Check if user filled the form
-				if(name.trim().length() > 0 && email.trim().length() > 0){
+				if(password.trim().length() > 0 && email.trim().length() > 0){
 					// Launch Main Activity
 					Intent i = new Intent(getApplicationContext(), MainActivity.class);
 					
 					// Registering user on our server					
 					// Sending registraiton details to MainActivity
-					i.putExtra("name", name);
-					i.putExtra("email", email);
+					i.putExtra("Password", password);
+					i.putExtra("eMail", email);
 					startActivity(i);
 					finish();
 				}else{
